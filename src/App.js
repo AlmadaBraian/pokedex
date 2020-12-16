@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 
-class Pokemon (){
-  constructor(nombre,data,tipo,img1,img2){
+let pokeArray = [];
+
+class Pokemon {
+  constructor(nombre,dato,tipo,img1,img2){
     this.nombre = nombre;
-    this.data = data;
+    this.dato = dato;
     this.tipo = tipo;
     this.img1 = img1;
     this.img2 = img2;
@@ -14,6 +16,7 @@ class Pokemon (){
 }
 
 const App = () => {
+  
   const [pokemon, setPokemon] = useState("");
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemonType, setPokemonType] = useState("");
@@ -32,7 +35,13 @@ const App = () => {
       setPokemonImageBack(res.data.sprites.back_default);
       setPokemonData(toArray);
 
-      console.log(res);
+      pokeArray.push(new Pokemon(pokemon, toArray, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default));
+
+      //pokeArray.forEach(element => console.log(element));
+
+      //console.log(pokeArray[0]);
+
+      //console.log(poke);
       //console.log(pokemonImage);
     } catch (error) {
       console.log(error);
