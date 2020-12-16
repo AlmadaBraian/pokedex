@@ -38,8 +38,7 @@ const App = () => {
       pokeArray.push(new Pokemon(pokemon, toArray, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default));
 
       //pokeArray.forEach(element => console.log(element));
-
-      //console.log(pokeArray[0]);
+      console.log(pokeArray[0]);
 
       //console.log(poke);
       //console.log(pokemonImage);
