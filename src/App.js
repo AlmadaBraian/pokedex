@@ -3,6 +3,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 
+class Pokemon (){
+  constructor(nombre,data,tipo,img1,img2){
+    this.nombre = nombre;
+    this.data = data;
+    this.tipo = tipo;
+    this.img1 = img1;
+    this.img2 = img2;
+  }
+}
+
 const App = () => {
   const [pokemon, setPokemon] = useState("");
   const [pokemonData, setPokemonData] = useState([]);
