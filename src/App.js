@@ -7,6 +7,8 @@ const App = () => {
   const [pokemon, setPokemon] = useState("");
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemonType, setPokemonType] = useState("");
+  const [pokemonImageFront,setPokemonImageFront] = useState(``);
+  const [pokemonImageBack,setPokemonImageBack] = useState(``);
 
   const getPokemon = async () => {
     const toArray = [];
@@ -14,10 +16,14 @@ const App = () => {
       const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
       const res = await axios.get(url);
       toArray.push(res.data);
+       
       setPokemonType(res.data.types[0].type.name);
+      setPokemonImageFront(res.data.sprites.front_default);
+      setPokemonImageBack(res.data.sprites.back_default);
       setPokemonData(toArray);
 
       console.log(res);
+      //console.log(pokemonImage);
     } catch (error) {
       console.log(error);
     }
@@ -69,6 +75,14 @@ const App = () => {
             <div className="divTableRow">
               <div className="divTableCell">Numero de Batallas</div>
               <div className="divTableCell">{data.game_indices.length}</div>
+            </div>
+            <div className="divTableRow">
+              <div className="divTableCell">frente</div>
+              <div><img src = {pokemonImageFront}></img></div>             
+            </div>
+            <div className="divTableRow">
+              <div className="divTableCell">espalda</div>
+              <div><img src = {pokemonImageBack}></img></div>             
             </div>
           </div>
         </div>
