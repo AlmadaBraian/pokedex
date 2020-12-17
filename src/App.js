@@ -4,8 +4,6 @@ import axios from "axios";
 import Tabla from './components/Tabla';
 import "./App.css";
 
-var pokeArray = [];
-
 class Pokemon {
   constructor(nombre,dato,tipo,img1,img2){
     this.nombre = nombre;
@@ -23,9 +21,12 @@ const App = () => {
   const [pokemonType, setPokemonType] = useState("");
   const [pokemonImageFront,setPokemonImageFront] = useState(``);
   const [pokemonImageBack,setPokemonImageBack] = useState(``);
+  const [pokeArray,setPokemonArray] = useState([]);
 
   const getPokemon = async () => {
     const toArray = [];
+    
+
     try {
       const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
       const res = await axios.get(url);
@@ -35,7 +36,8 @@ const App = () => {
       setPokemonImageFront(res.data.sprites.front_default);
       setPokemonImageBack(res.data.sprites.back_default);
       setPokemonData(toArray);
-
+      const poke = new Pokemon(pokemon, toArray, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default)
+      pokeArray.push(poke);
       //pokeArray.push(new Pokemon(pokemon, toArray, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default));
 
       //pokeArray.forEach(element => console.log(element));
@@ -70,7 +72,6 @@ const App = () => {
           />
         </label>
       </form>
-
       {pokemonData.map((data) => (
         <div className="container">
           <img />
@@ -108,7 +109,7 @@ const App = () => {
           </div>
         </div>
       ))}
-      <Tabla/>
+      <Tabla poke = {pokeArray[0]}/>
     </div>
   );
 };
