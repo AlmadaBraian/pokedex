@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import axios from "axios";
+import Tabla from './components/Tabla';
 import "./App.css";
 
 let pokeArray = [];
@@ -58,6 +59,7 @@ const App = () => {
 
   return (
     <div className="App">
+      
       <form onSubmit={handleSubmit}>
         <label>
           <input
@@ -68,6 +70,7 @@ const App = () => {
           />
         </label>
       </form>
+      <Tabla/>
       {pokemonData.map((data) => (
         <div className="container">
           <img />
