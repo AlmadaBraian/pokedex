@@ -28,6 +28,7 @@ const App = () => {
     try {
       const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
       const res = await axios.get(url);
+      console.log(res);
       toArray.push(res.data);
        
       setPokemonType(res.data.types[0].type.name);
