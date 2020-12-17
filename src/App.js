@@ -4,7 +4,7 @@ import axios from "axios";
 import Tabla from './components/Tabla';
 import "./App.css";
 
-let pokeArray = [];
+var pokeArray = [];
 
 class Pokemon {
   constructor(nombre,dato,tipo,img1,img2){
@@ -36,10 +36,10 @@ const App = () => {
       setPokemonImageBack(res.data.sprites.back_default);
       setPokemonData(toArray);
 
-      pokeArray.push(new Pokemon(pokemon, toArray, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default));
+      //pokeArray.push(new Pokemon(pokemon, toArray, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default));
 
       //pokeArray.forEach(element => console.log(element));
-      console.log(pokeArray[0]);
+      //console.log(pokeArray[0]);
 
       //console.log(poke);
       //console.log(pokemonImage);
@@ -70,7 +70,7 @@ const App = () => {
           />
         </label>
       </form>
-      <Tabla/>
+
       {pokemonData.map((data) => (
         <div className="container">
           <img />
@@ -108,6 +108,7 @@ const App = () => {
           </div>
         </div>
       ))}
+      <Tabla/>
     </div>
   );
 };

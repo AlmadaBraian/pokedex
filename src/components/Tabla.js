@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React, { useEffect, useState, Component } from "react";
 
-class Tabla extends Component {
-    render() {
-        return <h1>Que onda wacha</h1>
-    }
+const Tabla = pokemon => {
+    //console.log(pokemon)
+    return <h1>Trolisimo</h1>
 }
+
 
 export default Tabla
