@@ -21,11 +21,11 @@ const App = () => {
   const [pokemonType, setPokemonType] = useState("");
   const [pokemonImageFront,setPokemonImageFront] = useState(``);
   const [pokemonImageBack,setPokemonImageBack] = useState(``);
-  const [pokeArray,setPokemonArray] = useState([]);
+  const [pokeObjeto, setPokeObjeto] = useState("");
+  //const [pokeArray,setPokemonArray] = useState([]);
 
   const getPokemon = async () => {
     const toArray = [];
-    
 
     try {
       const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
@@ -36,8 +36,8 @@ const App = () => {
       setPokemonImageFront(res.data.sprites.front_default);
       setPokemonImageBack(res.data.sprites.back_default);
       setPokemonData(toArray);
-      const poke = new Pokemon(pokemon, toArray, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default)
-      pokeArray.push(poke);
+      setPokeObjeto (new Pokemon(pokemon, toArray, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default));
+      //pokeArray.push(poke);
       //pokeArray.push(new Pokemon(pokemon, toArray, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default));
 
       //pokeArray.forEach(element => console.log(element));
@@ -58,7 +58,7 @@ const App = () => {
     e.preventDefault();
     getPokemon();
   };
-
+  
   return (
     <div className="App">
       
@@ -74,6 +74,11 @@ const App = () => {
       </form>
       {pokemonData.map((data) => (
         <div className="container">
+          
+          <Tabla poke = {pokeObjeto} altura = {data.height} >
+            <p>Children</p>
+            <p>Children</p>
+          </Tabla>
           <img />
           <div className="divTable">
             <div className="divTableBody"></div>
@@ -109,7 +114,6 @@ const App = () => {
           </div>
         </div>
       ))}
-      <Tabla poke = {pokeArray[0]}/>
     </div>
   );
 };
