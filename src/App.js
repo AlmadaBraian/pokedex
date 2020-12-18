@@ -83,6 +83,7 @@ const App = () => {
         </label>
         
       </form>
+      
       {pokemonData.map((data) => (
         
         <div className="container">
@@ -91,7 +92,7 @@ const App = () => {
             <p>Children</p>
             <p>Children</p>
           </Tabla>
-          <DenseTable />
+          <DenseTable nombre = {pokemon} tipo = {pokemonType}  altura =  {Math.round(data.height * 10)}  peso = {Math.round(data.weight / 10)} batallas = {data.game_indices.length}  frente = {pokemonImageFront}/>
           <img />
           <div className="divTable">
             <div className="divTableBody"></div>
