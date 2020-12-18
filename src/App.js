@@ -8,6 +8,7 @@ import DenseTable from "./components/DenseTable";
 
 
 let pokeArray = [];
+//let pokeObjeto = {};
 let cont = 0;
 class Pokemon {
   constructor(nombre,dato,tipo,img1,img2){
@@ -26,8 +27,8 @@ const App = () => {
   const [pokemonType, setPokemonType] = useState("");
   const [pokemonImageFront,setPokemonImageFront] = useState(``);
   const [pokemonImageBack,setPokemonImageBack] = useState(``);
-  const [pokeObjeto, setPokeObjeto] = useState("");
-  //const [pokeArray,setPokemonArray] = useState([]);
+  const [pokeObjeto, setPokeObjeto] = useState({});
+  let [pokeArray,setPokemonArray] = useState([]);
 
   const getPokemon = async () => {
     const toArray = [];
@@ -42,8 +43,9 @@ const App = () => {
       setPokemonImageBack(res.data.sprites.back_default);
       setPokemonData(toArray);
       
-      //pokeObjeto = new Pokemon(pokemon, toArray, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default);
-      //pokeArray.push(poke);
+      setPokeObjeto({id: 0, Nombre: pokemon, Tipo: res.data.types[0].type.name, Altura: Math.round(res.data.height * 10), Peso:Math.round(res.data.weight / 10), Batallas: res.data.game_indices.length, Frente: res.data.sprites.front_default});
+      
+      //pokeArray.push(pokeObjeto);
       
       
       //pokeArray.forEach(element => console.log(element));
@@ -69,6 +71,7 @@ const App = () => {
     //pokeArray.push(pokeObjeto);
   };
   
+  
   return (
     <div className="App">
       <form onSubmit={handleSubmit}>
@@ -87,12 +90,8 @@ const App = () => {
       {pokemonData.map((data) => (
         
         <div className="container">
-
-          <Tabla lista = {pokeArray} >
-            <p>Children</p>
-            <p>Children</p>
-          </Tabla>
-          <DenseTable nombre = {pokemon} tipo = {pokemonType}  altura =  {Math.round(data.height * 10)}  peso = {Math.round(data.weight / 10)} batallas = {data.game_indices.length}  frente = {pokemonImageFront}/>
+          
+          <DenseTable objeto = {pokeObjeto}/>
           <img />
           <div className="divTable">
             <div className="divTableBody"></div>
@@ -128,8 +127,9 @@ const App = () => {
           </div>
         </div>
       ))}
-     
+     <script></script>
     </div>
+    
     
   );
 };
