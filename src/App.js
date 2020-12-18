@@ -1,9 +1,14 @@
+/* eslint-disable jsx-a11y/alt-text */
 import logo from "./logo.svg";
 import React, { useEffect, useState, Component } from "react";
 import axios from "axios";
 import Tabla from './components/Tabla';
 import "./App.css";
+import DenseTable from "./components/DenseTable";
 
+
+let pokeArray = [];
+let cont = 0;
 class Pokemon {
   constructor(nombre,dato,tipo,img1,img2){
     this.nombre = nombre;
@@ -36,10 +41,11 @@ const App = () => {
       setPokemonImageFront(res.data.sprites.front_default);
       setPokemonImageBack(res.data.sprites.back_default);
       setPokemonData(toArray);
-      setPokeObjeto (new Pokemon(pokemon, toArray, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default));
+      
+      //pokeObjeto = new Pokemon(pokemon, toArray, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default);
       //pokeArray.push(poke);
-      //pokeArray.push(new Pokemon(pokemon, toArray, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default));
-
+      
+      
       //pokeArray.forEach(element => console.log(element));
       //console.log(pokeArray[0]);
 
@@ -57,11 +63,14 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     getPokemon();
+    
+    //console.log(pokemonData);
+    //pokeObjeto = new Pokemon(pokemon, pokemonData, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default);
+    //pokeArray.push(pokeObjeto);
   };
   
   return (
     <div className="App">
-      
       <form onSubmit={handleSubmit}>
         <label>
           <input
@@ -70,15 +79,19 @@ const App = () => {
             placeholder="Ingrese nombre del pokemon"
             value={pokemon}
           />
+          
         </label>
+        
       </form>
       {pokemonData.map((data) => (
+        
         <div className="container">
-          
-          <Tabla poke = {pokeObjeto} altura = {data.height} >
+
+          <Tabla lista = {pokeArray} >
             <p>Children</p>
             <p>Children</p>
           </Tabla>
+          <DenseTable />
           <img />
           <div className="divTable">
             <div className="divTableBody"></div>
@@ -109,12 +122,14 @@ const App = () => {
             </div>
             <div className="divTableRow">
               <div className="divTableCell">espalda</div>
-              <div><img src = {pokemonImageBack}></img></div>             
+              <div><img src = {pokemonImageBack}></img></div>      
             </div>
           </div>
         </div>
       ))}
+     
     </div>
+    
   );
 };
 

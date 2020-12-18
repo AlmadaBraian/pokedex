@@ -1,23 +1,39 @@
-import React, { useEffect, useState, Component } from "react";
+import React, { useEffect, useState, Component,DataGrid } from "react";
 
-const Tabla = pokemon => {
-    console.log(pokemon.poke)
-    return (
-        <div className="divTable">
-          <div className="divTableBody"></div>
-          <div className="divTableRow">
-            <div className="divTableCell">Tipo</div>
-            <div className="divTableCell">{pokemon.poke.tipo}</div>
+let array = [];
+
+function crearTabla(datosTabla) {
+
+  var tabla = document.createElement('table');
+  var cuerpoTabla = document.createElement('tbody');
+
+  datosTabla.forEach(function(datosFilas) {
+    <div className="divTable">
+            <div className="divTableBody"></div>
+            <div className="divTableRow">
+              <div className="divTableCell">Tipo</div>
+              <div className="divTableCell">poketipo</div>
             </div>
             <div className="divTableRow">
               <div className="divTableCell">Altura</div>
               <div className="divTableCell">
                 {" "}
-                {Math.round(pokemon.altura * 10)} cm
+                pokealtura cm
               </div>
             </div>
+    </div>
+  });
 
-            </div>
+  tabla.appendChild(cuerpoTabla);
+  document.body.appendChild(tabla);
+}
+const Tabla = pokemon => {
+    return (
+
+        <div className="divTable">
+             {crearTabla(pokemon.lista)} 
+        </div>
+            
        
         //<h1>Trolisimo el {pokemon.poke.nombre}</h1>
     )
