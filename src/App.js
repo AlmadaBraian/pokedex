@@ -27,8 +27,8 @@ const App = () => {
   const [pokemonType, setPokemonType] = useState("");
   const [pokemonImageFront,setPokemonImageFront] = useState(``);
   const [pokemonImageBack,setPokemonImageBack] = useState(``);
-  const [pokeObjeto, setPokeObjeto] = useState({});
-  let [pokeArray,setPokemonArray] = useState([]);
+  //const [pokeObjeto, setPokeObjeto] = useState({});
+  const [pokeArray,setPokemonArray] = useState([]);
 
   const getPokemon = async () => {
     const toArray = [];
@@ -43,10 +43,9 @@ const App = () => {
       setPokemonImageBack(res.data.sprites.back_default);
       setPokemonData(toArray);
       
-      setPokeObjeto({id: 0, Nombre: pokemon, Tipo: res.data.types[0].type.name, Altura: Math.round(res.data.height * 10), Peso:Math.round(res.data.weight / 10), Batallas: res.data.game_indices.length, Frente: res.data.sprites.front_default});
-      
+      const pokeObjeto = {id: res.data.id, Nombre: pokemon, Tipo: res.data.types[0].type.name, Altura: Math.round(res.data.height * 10), Peso:Math.round(res.data.weight / 10), Batallas: res.data.game_indices.length, Frente: res.data.sprites.front_default};
       //pokeArray.push(pokeObjeto);
-      
+      setPokemonArray([...pokeArray, pokeObjeto])
       
       //pokeArray.forEach(element => console.log(element));
       //console.log(pokeArray[0]);
@@ -57,7 +56,6 @@ const App = () => {
       console.log(error);
     }
   };
-
   const handleChange = (e) => {
     setPokemon(e.target.value.toLowerCase());
   };
@@ -86,12 +84,12 @@ const App = () => {
         </label>
         
       </form>
+
+      <DenseTable pokeArray = {pokeArray}/>
       
       {pokemonData.map((data) => (
         
         <div className="container">
-          
-          <DenseTable objeto = {pokeObjeto}/>
           <img />
           <div className="divTable">
             <div className="divTableBody"></div>
