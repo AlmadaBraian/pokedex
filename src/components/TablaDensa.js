@@ -28,7 +28,7 @@ export default function TablaDensa(props) {
             <TableCell align="right">Nombre</TableCell>
             <TableCell align="right">Tipo</TableCell>
             <TableCell align="right">Altura&nbsp;(cm)</TableCell>
-            <TableCell align="right">Peso&nbsp;(g)</TableCell>
+            <TableCell align="right">Peso&nbsp;(kg)</TableCell>
             <TableCell align="right">Batallas</TableCell>
             <TableCell align="right">Sprite frente</TableCell>
             <TableCell align="right">Sprite espalda</TableCell>
