@@ -12,6 +12,7 @@ const App = () => {
     try {
       const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
       const res = await axios.get(url);
+      
 
       const pokeObjeto = {
         id: res.data.id,
@@ -23,6 +24,7 @@ const App = () => {
         Frente: res.data.sprites.front_default,
         Espalda: res.data.sprites.back_default,
       };
+      //console.log(res.data.name)
 
       setPokemonArray([...pokeArray, pokeObjeto]);
     } catch (error) {
@@ -31,6 +33,7 @@ const App = () => {
   };
   const handleChange = (e) => {
     setPokemon(e.target.value.toLowerCase());
+    
   };
 
   const handleSubmit = (e) => {

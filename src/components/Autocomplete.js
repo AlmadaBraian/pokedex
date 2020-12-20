@@ -1,32 +1,32 @@
 /* eslint-disable no-use-before-define */
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import { Autocomplete } from '@material-ui/lab';
 import axios from "axios";
-import { array } from 'prop-types';
 
 
 
 function setOptions (){
 
-    array = [];
+    let array = [];
+    console.log("coso")
 
-    for(i=1; i < 898; i++ ){
+    /*for(var i=1; i < 898; i++ ){
         try {
             const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-            const res = await axios.get(url);
+            const res = axios.get(url);
             array.push(res.data.name);
         }catch (error) {
             console.log(error);
         }
     } 
     
-    console.log(array);
+   */ console.log(array);
 }
 
 
 export default function AutoComplete(props) {
-
+  setOptions();
   return (
     <Autocomplete
       id="combo-box-demo"
