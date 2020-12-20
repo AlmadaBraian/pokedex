@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
-import TablaDensa from "./components/TablaDensa";
+import AutoGrid from "./components/AutoGrid";
 
 const App = () => {
   const [pokemon, setPokemon] = useState("");
@@ -40,18 +40,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <form onSubmit={handleSubmit}>
-        <label>
-          <input
-            type="text"
-            onChange={handleChange}
-            placeholder="Ingrese nombre del pokemon"
-            value={pokemon}
-          />
-        </label>
-      </form>
 
-      <TablaDensa pokeArray={pokeArray} />
+      <AutoGrid pokeArray={pokeArray} handleSubmit={handleSubmit} handleChange={handleChange} pokemon={pokemon}/>
     </div>
   );
 };
