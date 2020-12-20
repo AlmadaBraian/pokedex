@@ -3,19 +3,19 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import axios from "axios";
-import { array } from 'prop-types';
+
 
 
 
 function setOptions (){
 
-    array = [];
+   let array = [];
 
-    for(i=1; i < 898; i++ ){
+    for(var i=1; i < 898; i++ ){
         try {
             const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-            const res = await axios.get(url);
-            array.push(res.data.name);
+            const res =  axios.get(url);
+            console.log(res);
         }catch (error) {
             console.log(error);
         }

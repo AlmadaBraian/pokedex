@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TablaDensa from "./TablaDensa";
-
+import Autocomplete from "./Autocomplete";
 
 
 
@@ -38,17 +38,8 @@ export default function AutoGrid(props) {
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>
-              <form onSubmit={props.handleSubmit}>
-                <label>
-                    <input
-                        type="text"
-                        onChange={props.handleChange}
-                        placeholder="Ingrese nombre del pokemon"
-                        value={props.pokemon}
-                    />
-                </label>
-            </form>
-            </Paper>
+              <Autocomplete handleSubmit= {props.handleSubmit} handleChange= {props.handleChange} pokemon= {props.pokemon}></Autocomplete>
+          </Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>xs</Paper>
