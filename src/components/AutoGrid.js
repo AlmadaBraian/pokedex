@@ -38,7 +38,19 @@ export default function AutoGrid(props) {
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>
-              <Autocomplete handleSubmit= {props.handleSubmit} handleChange= {props.handleChange} pokemon= {props.pokemon}></Autocomplete>
+
+          <form onSubmit={props.handleSubmit}>
+                <label>
+                    <input
+                        type="text"
+                        onChange={props.handleChange}
+                        placeholder="Ingrese nombre del pokemon"
+                        value={props.pokemon}
+                    />
+                </label>
+            </form>
+
+              <Autocomplete handleSubmit= {props.handleSubmit} handleChange= {props.handleChange} pokemon= {props.pokemon} nombre= {props.nombre}></Autocomplete>
           </Paper>
         </Grid>
         <Grid item xs>

@@ -8,10 +8,23 @@ const App = () => {
   const [pokemon, setPokemon] = useState("");
   const [pokeArray, setPokemonArray] = useState([]);
 
+  const [pokeNombres, setPokeNombres] = useState([]);
+
   const getPokemon = async () => {
     try {
       const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
       const res = await axios.get(url);
+
+      
+
+      for(var i= 1; i<898; i++){
+
+        const url2 = `https://pokeapi.co/api/v2/pokemon/${i}`;
+        const res2 = await axios.get(url);
+        const nombre = {nombre: res2.data.name};
+        setPokeNombres([...pokeNombres, nombre]);
+       
+      }
 
       const pokeObjeto = {
         id: res.data.id,
@@ -41,7 +54,7 @@ const App = () => {
   return (
     <div className="App">
       
-      <AutoGrid pokeArray= {pokeArray} handleSubmit= {handleSubmit} handleChange= {handleChange} pokemon= {pokemon}/>
+      <AutoGrid pokeArray= {pokeArray} handleSubmit= {handleSubmit} handleChange= {handleChange} pokemon= {pokemon} nombre= {pokeNombres}/>
     </div>
   );
 };

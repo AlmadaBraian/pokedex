@@ -7,7 +7,7 @@ import axios from "axios";
 
 
 
-function setOptions (){
+/*function setOptions (){
 
    let array = [];
 
@@ -22,7 +22,7 @@ function setOptions (){
     } 
     
     console.log(array);
-}
+}*/
 
 
 export default function AutoComplete(props) {
@@ -30,7 +30,7 @@ export default function AutoComplete(props) {
   return (
     <Autocomplete
       id="combo-box-demo"
-      options={top100Films}
+      options={props.nombre}
       getOptionLabel={(option) => option.title}
       style={{ width: 300 }}
       renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
@@ -38,8 +38,4 @@ export default function AutoComplete(props) {
   );
 }
 
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const top100Films = [
-  { title: 'The Shawshank Redemption', year: 1994 },
-  
-];
+
