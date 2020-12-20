@@ -1,12 +1,29 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./App.css";
 import AutoGrid from "./components/AutoGrid";
 
+
 const App = () => {
+  let i = 1;
   const [pokemon, setPokemon] = useState("");
   const [pokeArray, setPokemonArray] = useState([]);
+  const [options, setOptions] = useState([]);
+
+  useEffect(() => {
+    const pokemon = [];
+    const promises = new Array(490)
+      .fill()
+      .map((v, i) => fetch(`https://pokeapi.co/api/v2/pokemon-form/${i + 1}`))
+    Promise.all(promises).then((pokemonArr) => {
+      return pokemonArr.map(res => res.json().then(({name,}) => {
+        return pokemon.push({name})
+
+      }))
+    })
+setOptions(pokemon);
+}, []);
 
 
   const getPokemon = async () => {
@@ -43,9 +60,10 @@ const App = () => {
   };
   
   return (
+    
     <div className="App">
       
-      <AutoGrid pokeArray= {pokeArray} handleSubmit= {handleSubmit} handleChange= {handleChange} pokemon= {pokemon}/>
+      <AutoGrid pokeArray= {pokeArray} handleSubmit= {handleSubmit} handleChange= {handleChange} pokemon= {pokemon} nombres= {options}/>
     </div>
   );
 };

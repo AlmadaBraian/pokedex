@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AutoGrid(props) {
   const classes = useStyles();
-
+  console.log(props.nombre)
   return (
     <div className={classes.root}>
     
@@ -38,18 +38,7 @@ export default function AutoGrid(props) {
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>
-          <form onSubmit={props.handleSubmit}>
-                <label>
-                    <input
-                        type="text"
-                        onChange={props.handleChange}
-                        placeholder="Ingrese nombre del pokemon"
-                        value={props.pokemon}
-                    />
-                </label>
-            </form>
-
-              <Autocomplete handleSubmit= {props.handleSubmit} handleChange= {props.handleChange} pokemon= {props.pokemon}></Autocomplete>
+            <Autocomplete handleSubmit= {props.handleSubmit} handleChange= {props.handleChange} pokemon= {props.pokemon} nombres= {props.nombres}></Autocomplete> 
           </Paper>
         </Grid>
         <Grid item xs>
