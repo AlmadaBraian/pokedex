@@ -1,3 +1,4 @@
+//investigar map filter find 
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
@@ -6,25 +7,31 @@ import AutoGrid from "./components/AutoGrid";
 
 
 const App = () => {
-  let i = 1;
+
   const [pokemon, setPokemon] = useState("");
   const [pokeArray, setPokemonArray] = useState([]);
   const [options, setOptions] = useState([]);
 
-  useEffect(() => {
-    const pokemon = [];
-    const promises = new Array(490)
-      .fill()
-      .map((v, i) => fetch(`https://pokeapi.co/api/v2/pokemon-form/${i + 1}`))
-    Promise.all(promises).then((pokemonArr) => {
-      return pokemonArr.map(res => res.json().then(({name,}) => {
-        return pokemon.push({name})
 
-      }))
-    })
-setOptions(pokemon);
-}, []);
 
+  useEffect( () => {
+    obtenerPokemon();
+  }, []);
+
+
+  const obtenerPokemon = async () => {
+    try {
+      const url = `https://pokeapi.co/api/v2/pokemon/?limit=-1`;
+      const res = await axios.get(url);
+      const listaPokemon = res.data.results;
+      const nombres = listaPokemon.map((pokemon)=> pokemon.name);
+
+      setOptions(nombres);
+
+    }catch (error) {
+      console.log(error);
+    }
+  }
 
   const getPokemon = async () => {
     try {

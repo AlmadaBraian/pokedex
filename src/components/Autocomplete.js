@@ -13,7 +13,7 @@ export default function AutoComplete(props) {
     <Autocomplete
       id="combo-box-demo"
       options= {props.nombres}
-      getOptionLabel={(option) => option.name}
+      getOptionLabel={(option) => option}
       style={{ width: 600 }}
       renderInput={(params) => <TextField {...params} label="Ingrese nombre pokemon" variant="outlined" onChange={props.handleChange} value={props.pokemon}/>}
     />
