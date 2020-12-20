@@ -4,14 +4,12 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.2",
-<<<<<<< HEAD
-=======
     "@material-ui/data-grid": "^4.0.0-alpha.13",
->>>>>>> da6b06720e8f63c238d29a8de0ea62d262beebbd
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",
     "axios": "^0.21.0",
+    "bootstrap": "^3.4.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",

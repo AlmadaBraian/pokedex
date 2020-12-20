@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
 import axios from "axios";
-import Tabla from './components/Tabla';
-import AutoComplete from "./components/Autocomplete";
 import "./App.css";
 import AutoGrid from "./components/AutoGrid";
 
@@ -14,15 +12,6 @@ const App = () => {
     try {
       const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
       const res = await axios.get(url);
-      console.log(res);
-      toArray.push(res.data);
-       
-      setPokemonType(res.data.types[0].type.name);
-      setPokemonImageFront(res.data.sprites.front_default);
-      setPokemonImageBack(res.data.sprites.back_default);
-      setPokemonData(toArray);
-
-      pokeArray.push(new Pokemon(pokemon, toArray, res.data.types[0].type.name, res.data.sprites.front_default, res.data.sprites.back_default));
 
       const pokeObjeto = {
         id: res.data.id,
@@ -52,7 +41,6 @@ const App = () => {
   return (
     <div className="App">
       
-      <AutoComplete/>
       <AutoGrid pokeArray= {pokeArray} handleSubmit= {handleSubmit} handleChange= {handleChange} pokemon= {pokemon}/>
     </div>
   );
