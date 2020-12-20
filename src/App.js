@@ -8,6 +8,7 @@ const App = () => {
   const [pokemon, setPokemon] = useState("");
   const [pokeArray, setPokemonArray] = useState([]);
 
+
   const getPokemon = async () => {
     try {
       const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
@@ -40,7 +41,7 @@ const App = () => {
     e.preventDefault();
     getPokemon();
   };
-
+  
   return (
     <div className="App">
       
