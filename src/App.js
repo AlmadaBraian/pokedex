@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import axios from "axios";
+import Tabla from './components/Tabla';
+import AutoComplete from "./components/Autocomplete";
 import "./App.css";
 
 let pokeArray = [];
@@ -59,16 +61,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <form onSubmit={handleSubmit}>
-        <label>
-          <input
-            type="text"
-            onChange={handleChange}
-            placeholder="Ingrese nombre del pokemon"
-            value={pokemon}
-          />
-        </label>
-      </form>
+      
+      <AutoComplete/>
+      <Tabla/>
       {pokemonData.map((data) => (
         <div className="container">
           <img />
