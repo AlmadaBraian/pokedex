@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TablaDensa from "./TablaDensa";
 import Autocomplete from "./Autocomplete";
+import AvatarIcon from "./AvatarIcon";
 
 
 
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AutoGrid(props) {
   const classes = useStyles();
-  console.log(props.nombre)
+  console.log(props.nombre);
   return (
     <div className={classes.root}>
     
@@ -34,11 +35,11 @@ export default function AutoGrid(props) {
         </Grid>
       <Grid container spacing={3}>
         <Grid item xs>
-          <Paper className={classes.paper}>xs</Paper>
+          <Paper className={classes.paper}><AvatarIcon/></Paper>
         </Grid>
         <Grid item xs>
           <Paper className={classes.paper}>
-            <Autocomplete handleSubmit= {props.handleSubmit} handleChange= {props.handleChange} pokemon= {props.pokemon} nombres= {props.nombres}></Autocomplete> 
+            <Autocomplete handleSubmit= {props.handleSubmit} handleChange= {props.handleChange} pokemon= {props.pokemon} nombres= {props.nombres} setPokemon = {props.setPokemon}></Autocomplete> 
           </Paper>
         </Grid>
         <Grid item xs>

@@ -58,11 +58,12 @@ const App = () => {
   };
   const handleChange = (e) => {
     setPokemon(e.target.value.toLowerCase());
-    
+    //console.log(e.target.value.toLowerCase());  
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    //console.log("hola");
     getPokemon();
   };
   
@@ -70,7 +71,7 @@ const App = () => {
     
     <div className="App">
       
-      <AutoGrid pokeArray= {pokeArray} handleSubmit= {handleSubmit} handleChange= {handleChange} pokemon= {pokemon} nombres= {options}/>
+      <AutoGrid pokeArray= {pokeArray} handleSubmit= {handleSubmit} handleChange= {handleChange} pokemon= {pokemon} nombres= {options} setPokemon={setPokemon}/>
     </div>
   );
 };

@@ -12,11 +12,15 @@ export default function AutoComplete(props) {
     <form onSubmit={props.handleSubmit}>
     <Autocomplete
       id="combo-box-demo"
+      onChange = {(event, newVal) => props.setPokemon(newVal)}
+      //value={props.pokemon}
       options= {props.nombres}
       getOptionLabel={(option) => option}
       style={{ width: 600 }}
-      renderInput={(params) => <TextField {...params} label="Ingrese nombre pokemon" variant="outlined" onChange={props.handleChange} value={props.pokemon}/>}
+      
+      renderInput={(params) => <TextField {...params} label="Ingrese nombre pokemon" onChange={props.handleChange} variant="outlined" value = {props.pokemon}/>}
     />
+
     </form>
   );
 }
